@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Contexts;
 
@@ -10,9 +11,10 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    partial class BaseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220908105744_Add-Technology")]
+    partial class AddTechnology
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,12 +45,12 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "C#"
+                            Name = "WPF"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Java"
+                            Name = "Spring"
                         });
                 });
 
@@ -75,20 +77,6 @@ namespace Persistence.Migrations
                     b.HasIndex("ProgrammingLanguageId");
 
                     b.ToTable("Technologies", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "WPF",
-                            ProgrammingLanguageId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Spring",
-                            ProgrammingLanguageId = 2
-                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Technology", b =>

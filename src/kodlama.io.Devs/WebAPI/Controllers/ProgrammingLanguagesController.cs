@@ -39,7 +39,7 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet]
+        [HttpGet("getlist")]
         public async Task<IActionResult> GetList(
             [FromQuery] PageRequest pageRequest)
         {
@@ -49,7 +49,7 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("getbyid/{Id}")]
         public async Task<IActionResult> GetById([FromRoute] GetByIdProgrammingLanguageQuery getByIdProgrammingLanguageQuery)
         {
             ProgrammingLanguageGetByIdDto programmingLanguageGetByIdDto = await Mediator.Send(getByIdProgrammingLanguageQuery);
