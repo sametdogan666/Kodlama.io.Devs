@@ -13,6 +13,7 @@ using Application.Features.Technologies.Dtos;
 using Application.Features.Technologies.Models;
 using AutoMapper;
 using Core.Persistence.Paging;
+using Core.Security.JWT;
 using Domain.Entities;
 
 namespace Application.Features.Technologies.Profiles
@@ -32,6 +33,8 @@ namespace Application.Features.Technologies.Profiles
 
             CreateMap<Technology, UpdatedTechnologyDto>().ReverseMap();
             CreateMap<Technology, UpdateTechnologyCommand>().ReverseMap();
+
+            CreateMap<ITokenHelper, JwtHelper>();
         }
     }
 }
