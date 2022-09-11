@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
-using Application.Features.Technologies.Dtos;
+﻿using Application.Features.Technologies.Dtos;
 using Application.Features.Technologies.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -33,7 +27,7 @@ namespace Application.Features.Technologies.Commands.CreateTechnology
 
             public async Task<CreatedTechnologyDto> Handle(CreateTechnologyCommand request, CancellationToken cancellationToken)
             {
-                await _technologyBusinessRules.TechnologyNameCanNotBeDuplicatedWhenInserted(request.Name);
+                await _technologyBusinessRules.TechnologyNameCanNotBeDuplicatedWhenInsertedOrUpdated(request.Name);
 
                 Technology mappedTechnology = _mapper.Map<Technology>(request);
                 Technology createdTechnology = await _technologyRepository.AddAsync(mappedTechnology);

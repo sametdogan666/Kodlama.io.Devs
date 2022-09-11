@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Application.Features.Technologies.Models;
+﻿using Application.Features.Technologies.Models;
 using Application.Services.Repositories;
 using AutoMapper;
 using Core.Application.Requests;

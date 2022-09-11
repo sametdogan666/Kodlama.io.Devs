@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Application.Features.ProgrammingLanguages.Commands.DeleteProgrammingLanguage;
-using Application.Features.ProgrammingLanguages.Commands.UpdateProgrammingLanguage;
-using Application.Features.ProgrammingLanguages.Dtos;
-using Application.Features.Technologies.Commands.CreateTechnology;
+﻿using Application.Features.Technologies.Commands.CreateTechnology;
 using Application.Features.Technologies.Commands.DeleteTechnology;
 using Application.Features.Technologies.Commands.UpdateTechnology;
 using Application.Features.Technologies.Dtos;

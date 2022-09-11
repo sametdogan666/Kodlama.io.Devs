@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Application.Features.ProgrammingLanguages.Dtos;
-using Application.Features.Technologies.Dtos;
+﻿using Application.Features.Technologies.Dtos;
 using Application.Features.Technologies.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -37,7 +31,7 @@ namespace Application.Features.Technologies.Commands.UpdateTechnology
                 Technology? technology = await _technologyRepository.GetAsync(t=>t.Id == request.Id);
 
                 _technologyBusinessRules.TechnologyShouldExistWhenRequested(technology);
-                await _technologyBusinessRules.TechnologyNameCanNotBeDuplicatedWhenInserted(request.Name);
+                await _technologyBusinessRules.TechnologyNameCanNotBeDuplicatedWhenInsertedOrUpdated(request.Name);
 
                 _mapper.Map(request, technology);
                 Technology updatedTechnology = await _technologyRepository.UpdateAsync(technology);

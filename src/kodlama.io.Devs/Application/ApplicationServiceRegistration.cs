@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using Application.Features.Auth.Rules;
+using Application.Features.GitHubProfiles.Rules;
 using Application.Features.ProgrammingLanguages.Rules;
 using Application.Features.Technologies.Rules;
 using Core.Application.Pipelines.Validation;
@@ -24,6 +20,7 @@ namespace Application
             services.AddScoped<ProgrammingLanguageBusinessRules>();
             services.AddScoped<TechnologyBusinessRules>();
             services.AddScoped<AuthBusinessRules>();
+            services.AddScoped<GitHubProfileBusinessRules>();
 
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());

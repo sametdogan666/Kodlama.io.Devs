@@ -19,6 +19,7 @@ namespace Persistence.Contexts
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<GitHubProfile> GitHubProfiles { get; set; }
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
@@ -103,6 +104,15 @@ namespace Persistence.Contexts
 
             });
 
+            modelBuilder.Entity<GitHubProfile>(a =>
+            {
+                a.ToTable("GitHubProfiles").HasKey(k => k.Id);
+                a.Property(p => p.Id).HasColumnName("Id");
+                a.Property(p => p.GitHubUrl).HasColumnName("GitHubUrl");
+                a.Property(p => p.UserId).HasColumnName("UserId");
+                a.HasOne(p => p.User);
+
+            });
 
 
             ProgrammingLanguage[] programmingLanguageEntitySeeds = { new(1, "C#"), new(2, "Java") };

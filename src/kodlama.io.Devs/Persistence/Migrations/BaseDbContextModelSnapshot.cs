@@ -167,6 +167,31 @@ namespace Persistence.Migrations
                     b.ToTable("UserOperationClaims", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Entities.GitHubProfile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("GitHubUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("GitHubUrl");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int")
+                        .HasColumnName("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("GitHubProfiles", (string)null);
+                });
+
             modelBuilder.Entity("Domain.Entities.ProgrammingLanguage", b =>
                 {
                     b.Property<int>("Id")
@@ -263,6 +288,17 @@ namespace Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("OperationClaim");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Entities.GitHubProfile", b =>
+                {
+                    b.HasOne("Core.Security.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
